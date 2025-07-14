@@ -28,7 +28,7 @@ A comprehensive Power BI dashboard designed to analyze historical weather data a
 - Power BI  
 - DAX  
 - Power Query  
-- [csv (data source) ](https://www.weatherapi.com/)  
+- Data Source (https://www.weatherapi.com/)  
 - GitHub (version control)
 
  ---
