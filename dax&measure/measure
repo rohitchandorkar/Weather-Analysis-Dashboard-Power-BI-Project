@@ -1,0 +1,171 @@
+Measure
+----
+🌫️ AIR QUALITY - COLOURS
+🔸 CO Colour
+
+CO Colour = 
+VAR AIQ = ROUND(SELECTEDVALUE(Current_Data[current.air_quality.co]), 0)
+RETURN
+    SWITCH(
+        TRUE(),
+        AIQ <= 50, "#43d946",       // Good (Green)
+        AIQ <= 100, "#fff570",      // Moderate (Yellow)
+        AIQ <= 150, "#ff9800",      // Poor (Orange)
+        AIQ <= 200, "#d99343",      // Unhealthy (Red)
+        AIQ <= 3000, "#ff5b0f",     // Severe (Purple)
+        "#d95243"                   // Hazardous (Dark Maroon)
+    )
+
+---
+
+🔸 NO₂ Colour
+
+NO.2 Colour = 
+VAR AIQ = ROUND(SELECTEDVALUE(Current_Data[current.air_quality.no2]), 0)
+RETURN
+    SWITCH(
+        TRUE(),
+        AIQ <= 50, "#43d946",
+        AIQ <= 100, "#fff570",
+        AIQ <= 150, "#ff9800",
+        AIQ <= 200, "#d99343",
+        AIQ <= 3000, "#ff5b0f",
+        "#d95243"
+    )
+
+---
+🔸 O₃ Colour
+
+O3 Colour = 
+VAR AIQ = ROUND(SELECTEDVALUE(Current_Data[current.air_quality.o3]), 0)
+RETURN
+    SWITCH(
+        TRUE(),
+        AIQ <= 50, "#43d946",
+        AIQ <= 100, "#fff570",
+        AIQ <= 150, "#ff9800",
+        AIQ <= 200, "#d99343",
+        AIQ <= 3000, "#ff5b0f",
+        "#d95243"
+    )
+
+---
+
+🔸 SO₂ Colour
+
+SO2 Colour = 
+VAR AIQ = ROUND(SELECTEDVALUE(Current_Data[current.air_quality.so2]), 0)
+RETURN
+    SWITCH(
+        TRUE(),
+        AIQ <= 50, "#43d946",
+        AIQ <= 100, "#fff570",
+        AIQ <= 150, "#ff9800",
+        AIQ <= 200, "#d99343",
+        AIQ <= 3000, "#ff5b0f",
+        "#d95243"
+    )
+
+---
+
+🔸 PM10 Colour
+
+PM 10 Colour = 
+VAR AIQ = ROUND(SELECTEDVALUE(Current_Data[current.air_quality.pm10]), 0)
+RETURN
+    SWITCH(
+        TRUE(),
+        AIQ <= 50, "#43d946",
+        AIQ <= 100, "#fff570",
+        AIQ <= 150, "#ff9800",
+        AIQ <= 200, "#d99343",
+        AIQ <= 3000, "#ff5b0f",
+        "#d95243"
+    )
+---
+
+🔸 PM2.5 Colour
+
+PM 2.5 Colour = 
+VAR AIQ = ROUND(SELECTEDVALUE(Current_Data[current.air_quality.pm2_5]), 0)
+RETURN
+    SWITCH(
+        TRUE(),
+        AIQ <= 50, "#43d946",
+        AIQ <= 100, "#fff570",
+        AIQ <= 150, "#ff9800",
+        AIQ <= 200, "#d99343",
+        AIQ <= 3000, "#ff5b0f",
+        "#d95243"
+    )
+---
+📋 AIR QUALITY - STATUS TEXT & SUGGESTIONS
+
+🔸 PM10 Status Text
+
+PM Colour Status Text = 
+VAR AIQ = ROUND(SELECTEDVALUE(Current_Data[current.air_quality.pm10]), 0)
+RETURN
+    SWITCH(
+        TRUE(),
+        AIQ <= 50, "Good",
+        AIQ <= 100, "Moderate",
+        AIQ <= 150, "Unhealthy for Sensitive",
+        AIQ <= 200, "Unhealthy",
+        AIQ <= 3000, "Very Unhealthy",
+        "Hazardous"
+    )
+---
+🔸 PM10 AQI Suggestion
+
+PM_10 AQI suggestion = 
+VAR AIQ = ROUND(SELECTEDVALUE(Current_Data[current.air_quality.pm10]), 0)
+RETURN
+    SWITCH(
+        TRUE(),
+        AIQ <= 50, "Air is Clean & Healthy",
+        AIQ <= 100, "Acceptable air quality",
+        AIQ <= 150, "Sensitive group should reduce outdoor time",
+        AIQ <= 200, "Limit prolonged outdoor exertion",
+        AIQ <= 3000, "Avoid outdoor activity",
+        "Stay indoor"
+    )
+🌡️ TEMPERATURE MEASURES
+🔸 Current Temperature
+
+Current Temp = SUM(Current_Data[current.temp_c]) & " °C"
+Use SELECTEDVALUE if only one temperature expected.
+---
+🔸 Forecast Average Temperature
+
+Forecast Avg Temp = 
+ROUND(
+    AVERAGE(Forcast_Days[forecast.forecastday.day.avgtemp_c]), 
+    1
+) & " °C"
+---
+
+🌬️ WIND & VISIBILITY
+🔸 Wind Speed
+
+Wind Speed = SUM(Current_Data[current.wind_kph]) & " kph"
+🔸 Visibility
+
+Visiblity = SUM(Current_Data[current.vis_km]) & " kph"
+Consider correcting "Visiblity" to "Visibility" for clarity.
+---
+
+🌧️ RAIN RELATED
+🔸 Left Value Rain
+
+Left Value Rain = 100 + SUM(Forcast_Days[forecast.forecastday.day.daily_chance_of_rain])
+If this is meant to represent "how much is left from 100%", then it should be 100 - SUM(...) instead.
+---
+
+📊 MISCELLANEOUS / UTILITY
+🔸 Max Value (Constant)
+---
+
+Max Value = 300
+🔸 Left Value PM10
+Left Value PM 10 = [Max Value] - SUM(Current_Data[current.air_quality.pm10])
