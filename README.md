@@ -61,7 +61,7 @@ Grouped DAX measures include:
 ## 📁 Folder Structure
 Health-Care/
 
-├── docs/                           # PNG Image 
+├── docs/                           # PNG Image
 ├── data/                           # weatherapi Link  
 ├── weatheranalysis.pbix            # Power BI file  
 ├── dax & measure.md                # DAX grouped documentation  
