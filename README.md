@@ -1,11 +1,9 @@
 # Weather-Analysis-Dashboard-Power-BI-Project
-A comprehensive Power BI dashboard designed to analyze historical weather data across multiple cities. It provides deep insights into temperature patterns, humidity trends, wind speed variations, and precipitation events using dynamic visuals and DAX-driven metrics.
-
 
 ---
 
 ## Description
-This Power BI project visualizes and analyzes healthcare-related data to derive meaningful insights into hospital performance, patient demographics, treatment types, and operational efficiency.
+A comprehensive Power BI dashboard designed to analyze historical weather data across multiple cities. It provides deep insights into temperature patterns, humidity trends, wind speed variations, and precipitation events using dynamic visuals and DAX-driven metrics.
 
 
 ---
